@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-
 Route::match(['get', 'post'], '/', 'IndexController@index');
 
+Route::match(['get', 'post'], '/admin', 'AdminController@login');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
