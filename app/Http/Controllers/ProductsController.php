@@ -51,7 +51,42 @@ class ProductsController extends Controller
         public function viewProducts() {
             $products = Products::get();
             return view('admin.products.view_products')->with(compact('products'));
-        } 
+        }
+
+        public function editProduct(Request $request, $id=null) {
+            if ($request->isMethod('post')) {
+                $data = $request->all();
+                if ($request->hasFile('image')) {
+                    //echo $img_tmp = Input::file('image');
+                    echo $img_tmp = $request->image;
+                    //image path code
+                    if ($img_tmp->isValid()) {
+                        $extension = $img_tmp->getClientOriginalExtension();
+                        $filename = rand(111,99999).'.'.$extension;
+                        $img_path = 'uploads/products/'.$filename;
+
+                        //imageresize
+                        Image::make($img_tmp)->resize(500, 500)->save($img_path);
+                    } 
+                } else {
+                    $filename = $data['current_image'];
+                }
+                if (empty($data['product_description'])){
+                    $data['product_description'] = '';
+                }
+                Products::where(['id'=>$id])->update([
+                    'name'=>$data['product_name'],
+                    'code'=>$data['product_code'],
+                    'color'=>$data['product_color'],
+                    'description'=>$data['product_description'],
+                    'price'=>$data['product_price'],
+                    'image'=>$filename,
+                ]);
+                return redirect()->back()->with('flash_message_success', "Product has been edited successfully!");
+            }
+            $productDetails = Products::where(['id'=>$id])->first();
+            return view('admin.products.edit_product')->with(compact('productDetails'));
+        }
     }
 
 
