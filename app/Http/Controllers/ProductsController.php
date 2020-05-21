@@ -47,7 +47,12 @@ class ProductsController extends Controller
             }
             return view('admin.products.add_product');
         }
-}
+        
+        public function viewProducts() {
+            $products = Products::get();
+            return view('admin.products.view_products')->with(compact('products'));
+        } 
+    }
 
 
 //

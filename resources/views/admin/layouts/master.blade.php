@@ -31,6 +31,7 @@
       <!-- Start page Label Plugins 
          =====================================================================-->
       <!-- Emojionearea -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
       <link href="{{asset('admin_assets/plugins/emojionearea/emojionearea.min.css')}}" rel="stylesheet" type="text/css"/>
       <!-- Monthly css -->
       <link href="{{asset('admin_assets/plugins/monthly/monthly.css')}}" rel="stylesheet" type="text/css"/>
@@ -88,6 +89,7 @@
     <!-- Dashboard js -->
     <script src="{{asset('admin_assets/dist/js/dashboard.js')}}" type="text/javascript"></script>
     <!-- End Theme label Script =====================================================================-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <script>
         function dash() {
         // single bar chart

@@ -20,7 +20,7 @@
                   </a>
                   <ul class="treeview-menu">
                      <li><a href="{{url('admin/add-product')}}">Add Product</a></li>
-                     <li><a href="#">#</a></li>
+                     <li><a href="{{url('admin/view-products')}}">View Product</a></li>
                   </ul>
                </li>
             </ul>
