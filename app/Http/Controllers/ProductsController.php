@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Products;
 // use Laravel\Ui\Presets\React;
 
@@ -42,7 +43,7 @@ class ProductsController extends Controller
                     }
                 }
                 $product->save();
-                return redirect('/admin/add-product')->with('flash_message_success', 'Product has been added successfully!');
+                return redirect('/admin/view_products')->with('flash_message_success', 'Product has been added successfully!');
 
             }
             return view('admin.products.add_product');
@@ -82,10 +83,16 @@ class ProductsController extends Controller
                     'price'=>$data['product_price'],
                     'image'=>$filename,
                 ]);
-                return redirect()->back()->with('flash_message_success', "Product has been edited successfully!");
+                return redirect()->back()->with('flash_message_success', "Product has been edited!");
             }
             $productDetails = Products::where(['id'=>$id])->first();
             return view('admin.products.edit_product')->with(compact('productDetails'));
+        }
+
+        public function deleteProduct($id=null) {
+            Products::where(['id'=>$id])->delete();
+            Alert::success('Deleted Successfully', 'Success Message');
+            return redirect()->back()->with('flash_message_success', 'Product has been deleted!');
         }
     }
 

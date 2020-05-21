@@ -5,7 +5,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Admin Panel</title>
+      <title>@yield('title') - PerShop</title>
       <!-- Favicon and touch icons -->
       <link rel="shortcut icon" href="{{asset('admin_assets/')}}dist/img/ico/favicon.png" type="image/x-icon">
       <!-- Start Global Mandatory Style
@@ -91,6 +91,12 @@
     <!-- End Theme label Script =====================================================================-->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );
+    </script>
+
+    <script>
         function dash() {
         // single bar chart
         var ctx = document.getElementById("singelBarChart");
@@ -159,6 +165,7 @@
         }
         dash();         
     </script>
+    @include('sweetalert::alert')
 </body>
 
 </html>

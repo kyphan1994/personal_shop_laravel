@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-
+@section('title', 'View Product')
 @section('content')
 
          <!-- Content Wrapper. Contains page content -->
@@ -62,7 +62,7 @@
                                        <td><span class="label-custom label label-default">Active</span></td>
                                        <td>
                                             <a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                            <a href="{{url('/admin/delete-product/'.$product->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                        </td>
                                     </tr>
                                     @endforeach

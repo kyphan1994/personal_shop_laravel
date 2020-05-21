@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title', 'Edit Product')
 @section('content')
 
          <!-- Content Wrapper. Contains page content -->
@@ -77,7 +78,7 @@
                                     @endif
                              </div>
                               <div class="reset-button">
-                                 <input type="submit" class="btn btn-success" value="Edit Product">
+                                 <input type="submit" class="btn btn-success" value="Edit    Product">
                               </div>
                            </form>
                         </div>
