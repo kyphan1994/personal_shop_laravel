@@ -25,4 +25,11 @@ Route::match(['get', 'post'], '/admin', 'AdminController@login');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::match(['get', 'post'], '/admin/dashboard', 'AdminController@dashboard');
+
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::match(['get', 'post'], '/admin/dashboard', 'AdminController@dashboard');
+    Route::match(['get', 'post'], '/admin/add-product', 'ProductsController@addProduct');
+});
+
+Route::get('/logout', 'AdminController@logout');

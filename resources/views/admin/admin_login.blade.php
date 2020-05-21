@@ -35,7 +35,7 @@
                     <strong>{!! session('flash_message_error') !!}</strong>
                 </div>
                 @endif
-
+    
                 @if(Session::has('flash_message_success'))
                 <div class="alert alert-sm alert-success alert-block" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -43,7 +43,7 @@
                     </button>
                     <strong>{!! session('flash_message_success') !!}</strong>
                 </div>
-                @endif
+                @endif                
             <div class="login-area">
                 <div class="panel panel-bd panel-custom">
                     <div class="panel-heading">
