@@ -88,7 +88,7 @@
                            <div class="detailswork">
                               <span class="label-custom label label-default pull-right">Email</span>
                               <a href="#" title="headings">Marketing policy</a> <br>
-                              <p>Green Road - Dhaka,Bangladesh</p>
+                              <p>220/5A Hoang Van Thu, P4, Tan Binh, HCM</p>
                            </div>
                            <div class="work-touchpoint">
                               <div class="work-touchpoint-date">
@@ -99,7 +99,7 @@
                            <div class="detailswork">
                               <span class="label-custom label label-default pull-right">skype</span>
                               <a href="#" title="headings">Accounting policy</a> <br>
-                              <p>Kolkata, India</p>
+                              <p>220/5A Hoang Van Thu, P4, Tan Binh, HCM</p>
                            </div>
                            <div class="work-touchpoint">
                               <div class="work-touchpoint-date2">
@@ -110,7 +110,7 @@
                            <div class="detailswork">
                               <span class="label-custom label label-default pull-right">phone</span>
                               <a href="#" title="headings">Marketing policy</a> <br>
-                              <p>Madrid  - spain</p>
+                              <p>220/5A Hoang Van Thu, P4, Tan Binh, HCM</p>
                            </div>
                            <div class="work-touchpoint">
                               <div class="work-touchpoint-date2">
@@ -121,7 +121,7 @@
                            <div class="detailswork">
                               <span class="label-custom label label-default pull-right">Mobile</span>
                               <a href="#" title="headings">Finance policy</a> <br>
-                              <p>south Australia  - Australia</p>
+                              <p>220/5A Hoang Van Thu, P4, Tan Binh, HCM</p>
                            </div>
                         </div>
                      </div>
@@ -192,7 +192,7 @@
                               <i class="fa fa-ban"></i>
                               <a href="#">Database tools</a>                          
                               <div class="upworkdate">
-                                 <p>Jul 25, 2017 for Alimul Alrazy</p>
+                                 <p>Mar 20, 2020 for Zean Bae</p>
                               </div>
                            </div>
                            <div class="Pendingwork">
@@ -200,7 +200,7 @@
                               <i class="fa fa-ban"></i>
                               <a href="#">Cabels</a>                          
                               <div class="upworkdate">
-                                 <p>Jul 25, 2017 for Alimul</p>
+                                 <p>Mar 20, 2020 for Zean Bae</p>
                               </div>
                            </div>
                            <div class="Pendingwork">
@@ -208,7 +208,7 @@
                               <i class="fa fa-ban"></i>
                               <a href="#">Technologycal tools</a>                          
                               <div class="upworkdate">
-                                 <p>Feb 25, 2017 for Alrazy</p>
+                                 <p>Mar 20, 2020 for Zean Bae</p>
                               </div>
                            </div>
                            <div class="Pendingwork">
@@ -216,7 +216,7 @@
                               <i class="fa fa-ban"></i>
                               <a href="#">Transaction</a>                          
                               <div class="upworkdate">
-                                 <p>apr 25, 2017 for Mahfuz</p>
+                                 <p>Mar 20, 2020 for Zean Bae</p>
                               </div>
                            </div>
                            <div class="Pendingwork">
@@ -224,7 +224,7 @@
                               <i class="fa fa-ban"></i>
                               <a href="#">Training tools</a>                          
                               <div class="upworkdate">
-                                 <p>jun 25, 2017 for Alrazy</p>
+                                 <p>Mar 20, 2020 for Zean Bae</p>
                               </div>
                            </div>
                         </div>
@@ -249,24 +249,24 @@
                                     </thead>
                                     <tbody>
                                        <tr class="info">
-                                          <th scope="row">Alrazy</th>
-                                          <td>Feb 25,2017</td>
+                                          <th scope="row">Zean Bae</th>
+                                          <td>Mar 20, 2020</td>
                                        </tr>
                                        <tr>
-                                          <th scope="row">Jahir</th>
-                                          <td>jun 05,2017</td>
+                                          <th scope="row">Zean Bae</th>
+                                          <td>Mar 20, 2020</td>
                                        </tr>
                                        <tr>
-                                          <th scope="row">Sayeed</th>
-                                          <td>Feb 05,2017</td>
+                                          <th scope="row">Zean Bae</th>
+                                          <td>Mar 20, 2020</td>
                                        </tr>
                                        <tr>
-                                          <th scope="row">Shipon</th>
-                                          <td>jun 25,2017</td>
+                                          <th scope="row">Zean Bae</th>
+                                          <td>Mar 20, 2020</td>
                                        </tr>
                                        <tr>
-                                          <th scope="row">Rafi</th>
-                                          <td>Jul 15,2017</td>
+                                          <th scope="row">Zean Bae</th>
+                                          <td>Mar 20, 2020</td>
                                        </tr>
                                     </tbody>
                                  </table>
