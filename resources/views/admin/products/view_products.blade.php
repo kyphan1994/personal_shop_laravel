@@ -38,7 +38,9 @@
                               <table id="table_id" class="table table-bordered table-striped table-hover">
                                  <thead>
                                     <tr class="info">
+                                       <th>ID</th>
                                        <th>Product Name</th>
+                                       <th>Category ID</th>
                                        <th>Product Code</th>
                                        <th>Product Color</th>
                                        <th>Image</th>
@@ -50,7 +52,9 @@
                                  <tbody>
                                     @foreach($products as $product)
                                     <tr>
+                                       <td>{{$product->id}}</td>
                                        <td>{{$product->name}}</td>
+                                       <td>{{$product->category_id}}</td>
                                        <td>{{$product->code}}</td>
                                        <td>{{$product->color}}</td>
                                        <td>
