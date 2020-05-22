@@ -14,6 +14,28 @@
                   <small>Products List</small>
                </div>
             </section>
+
+            @if(Session::has('flash_message_error'))
+            <div class="alert alert-sm alert-danger alert-block" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{{ session('flash_message_error') }}</strong>
+            </div>
+            @endif
+
+            @if(Session::has('flash_message_success'))
+            <div class="alert alert-sm alert-success alert-block" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{{ session('flash_message_success') }}</strong>
+            </div>
+            @endif
+
+            <div id="message_success" style="display:none;" class="alert alert-sm alert-success">Status Enabled</div>
+            <div id="message_error" style="display:none;" class="alert alert-sm alert-danger">Status Disabled</div>
+
             <!-- Main content -->
             <section class="content">
                <div class="row">
@@ -63,10 +85,15 @@
                                             @endif
                                         </td>
                                        <td>{{$product->price}}</td>
-                                       <td><span class="label-custom label label-default">Active</span></td>
                                        <td>
-                                            <a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="{{url('/admin/delete-product/'.$product->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                          <input type="checkbox" class="ProductStatus btn btn-success" rel="{{$product->id}}"
+                                          data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger"
+                                          @if ($product['status']=="1") checked @endif>
+                                          <div id="myElem" style="display:none;" class="alert alert-success">Status Enabled</div>
+                                       </td>
+                                       <td>
+                                          <a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
+                                          <a href="{{url('/admin/delete-product/'.$product->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                        </td>
                                     </tr>
                                     @endforeach

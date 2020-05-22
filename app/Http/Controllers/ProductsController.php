@@ -130,6 +130,11 @@ class ProductsController extends Controller
             Alert::success('Deleted Successfully', 'Success Message');
             return redirect()->back()->with('flash_message_success', 'Product has been deleted!');
         }
+
+        public function updateStatus(Request $request, $id=null) {
+            $data = $request->all();
+            Products::where('id', $data['id'])->update(['status'=>$data['status']]);
+        }
     }
 
 

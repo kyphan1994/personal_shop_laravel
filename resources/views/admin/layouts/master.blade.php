@@ -6,6 +6,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>@yield('title') - PerShop</title>
+      <meta name="csrf-token" content="{{csrf_token()}}">
       <!-- Favicon and touch icons -->
       <link rel="shortcut icon" href="{{asset('admin_assets/')}}dist/img/ico/favicon.png" type="image/x-icon">
       <!-- Start Global Mandatory Style
@@ -93,6 +94,40 @@
     <script>
         $(document).ready( function () {
             $('#table_id').DataTable();
+            $(".ProductStatus").change(function() {
+                var id =$(this).attr('rel');
+                if ($(this).prop("checked")==true) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'post',
+                        url: '/admin/update-product-status',
+                        data: {status:'1', id:id},
+                        success:function(resq) {
+                            $("#message_success").show();
+                            setTimeout(function() { $("#message_success").fadeOut('slow'); }, 2000);
+                        }, error:function() {
+                            alert("Error");
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'post',
+                        url: '/admin/update-product-status',
+                        data: {status:'0', id:id},
+                        success:function(resq) {
+                            $("#message_error").show();
+                            setTimeout(function() { $("#message_error").fadeOut('slow'); }, 2000);
+                        }, error:function() {
+                            alert("Error");
+                        }
+                    });
+                }
+            });
         } );
     </script>
 
@@ -165,6 +200,9 @@
         }
         dash();         
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script>
+    
     @include('sweetalert::alert')
 </body>
 
