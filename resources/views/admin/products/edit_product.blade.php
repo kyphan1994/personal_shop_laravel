@@ -20,7 +20,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
-                <strong>{!! session('flash_message_error') !!}</strong>
+                <strong>{{ session('flash_message_error') }}</strong>
             </div>
             @endif
 
@@ -29,7 +29,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
-                <strong>{!! session('flash_message_success') !!}</strong>
+                <strong>{{ session('flash_message_success') }}</strong>
             </div>
             @endif
 
