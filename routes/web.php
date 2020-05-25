@@ -43,6 +43,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::match(['get', 'post'], '/admin/edit-product/{id}', 'ProductsController@editProduct');
     Route::match(['get', 'post'], '/admin/delete-product/{id}', 'ProductsController@deleteProduct');
     Route::post('/admin/update-product-status', 'ProductsController@updateStatus');
+
+    //Banner Route
+    Route::match(['get', 'post'], '/admin/banners', 'BannersController@banners');
+    Route::match(['get', 'post'], '/admin/add-banner', 'BannersController@addBanner');
 });
 
 Route::get('/logout', 'AdminController@logout');

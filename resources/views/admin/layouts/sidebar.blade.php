@@ -35,6 +35,13 @@
                         <li><a href="{{url('admin/view-products')}}">View Product</a></li>
                      </ul>
                   </li>
+
+                  <li class="">
+                     <a href="{{url('/admin/banners')}}"><i class="fa fa-image"></i><span>Banners</span>
+                     <span class="pull-right-container">
+                     </span>
+                     </a>
+                  </li>
             </ul>
          </div>
          <!-- /.sidebar -->
