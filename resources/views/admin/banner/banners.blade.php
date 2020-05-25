@@ -69,17 +69,23 @@
                                     </tr>
                                  </thead>
                                  <tbody>
+                                    @foreach($bannerDetails as $bannerDetail)
                                     <tr>
-                                       <td>1</td>
-                                       <td>Banner Name</td>
-                                       <td>1</td>
-                                       <td>Image</td>
+                                       <td>{{$bannerDetail->id}}</td>
+                                       <td>{{$bannerDetail->name}}</td>
+                                       <td>{{$bannerDetail->sort_order}}</td>
+                                       <td>
+                                          @if (!empty($bannerDetail->image))
+                                          <img src="{{asset('/uploads/banners/'.$bannerDetail->image)}}" style="width: 250px;">
+                                          @endif
+                                       </td>
                                        <td>Status</td>
                                        <td>
-                                            <a href="#" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                             <a href="{{url('/admin/edit-banner/'.$bannerDetail->id)}}" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
+                                             <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                        </td>
                                     </tr>
+                                    @endforeach
                                  </tbody>
                               </table>
                            </div>
