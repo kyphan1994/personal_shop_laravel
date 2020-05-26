@@ -61,7 +61,7 @@
     </div>
     <!-- Start Core Plugins =====================================================================-->
     <!-- jQuery -->
-    <script src="{{asset('admin_assets/plugins/jQuery/jquery-1.12.4.min.js')}}" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- jquery-ui --> 
     <script src="{{asset('admin_assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js')}}" type="text/javascript"></script>
     <!-- Bootstrap -->
@@ -165,6 +165,31 @@
                     });
                 }
             });
+
+            //Add remove fields
+            $(document).ready(function(){
+                var maxField = 10; //Input fields increment limitation
+                var addButton = $('.add_button'); //Add button selector
+                var wrapper = $('.field_wrapper'); //Input field wrapper
+                var fieldHTML = '<div style="display: flex;"><input type="text" name="sku[]" id="sku" placeholder="SKU" class="form-control" style="width: 150px; margin-right:5px;"/><input type="text" name="size[]" id="size" placeholder="SIZE" class="form-control" style="width: 150px; margin-right:5px;"/><input type="text" name="price[]" id="price" placeholder="PRICE" class="form-control" style="width: 150px; margin-right:5px;"/><input type="text" name="stock[]" id="stock" placeholder="STOCKS" class="form-control" style="width: 150px; margin-right:5px;"/><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html 
+                var x = 1; //Initial field counter is 1
+    
+            //Once add button is clicked
+            $(addButton).click(function(){
+            //Check maximum number of input fields
+            if(x < maxField){ 
+                x++; //Increment field counter
+                $(wrapper).append(fieldHTML); //Add field html
+            }
+            });
+    
+            //Once remove button is clicked
+            $(wrapper).on('click', '.remove_button', function(e){
+            e.preventDefault();
+            $(this).parent('div').remove(); //Remove field html
+            x--; //Decrement field counter
+            });
+        });
         } );
     </script>
 

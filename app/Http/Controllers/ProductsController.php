@@ -7,6 +7,8 @@ use Intervention\Image\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Products;
 use App\Category;
+use App\ProductsAttributes;
+
 // use Laravel\Ui\Presets\React;
 
 class ProductsController extends Controller
@@ -140,5 +142,44 @@ class ProductsController extends Controller
             $productDetails = Products::where('id', $id)->first();
             // echo $productDetails;die;
             return view('pershop.product_details')->with(compact('productDetails'));
+        }
+
+        public function addAttributes(Request $request, $id=null) {
+            $productDetails = Products::with('attributes')->where(['id'=>$id])->first();
+            // dd($id);
+            // dd($productDetails);
+            if($request->isMethod('post')) {    
+                $data = $request->all();
+                // echo "<pre>"; print_r($data); die;
+                foreach($data['sku'] as $key =>$val) {
+                    if (!empty($val)) {
+                        //Prevent duplicate Sku Record
+                        $attrCountSKU = ProductsAttributes::where('sku', $val)->count();
+                        if ($attrCountSKU>0) {
+                            return redirect('/admin/add-attributes/'.$id)->with('flash_message_error', 'SKU is already exist please select another sku');
+                        }
+                        //Prevent duplicate Size Record
+                        $attrCountSizes = ProductsAttributes::where(['product_id'=>$id, 'size'=>$data['size'][$key]])->count();
+                        if ($attrCountSizes>0) {
+                            return redirect('/admin/add-attributes/'.$id)->with('flash_message_error', ''.$data['size'][$key].'Size is already exist please select anothersize');
+                        }
+
+                        $attributes = new ProductsAttributes;
+                        $attributes->product_id = $id;
+                        $attributes->sku = $val;
+                        $attributes->size = $data['size'][$key];
+                        $attributes->price = $data['price'][$key];
+                        $attributes->stock = $data['stock'][$key];
+                        $attributes->save();
+                    }
+                }
+                return redirect('/admin/add-attributes/'.$id)->with('flash_message_success', 'Product Attributes added Successfully!');
+            }
+            return view('admin.products.add_attributes')->with(compact('productDetails'));
+        }
+
+        public function deleteAttributes($id=null) {
+            ProductsAttributes::where(['id'=>$id])->delete();
+            return redirect()->back()->with('flash_message_error', 'Product Attributes has been deleted!');
         }
     }
