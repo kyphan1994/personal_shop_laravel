@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::match(['get', 'post'], '/', 'IndexController@index');
-
+Route::get('/products/{id}', 'ProductsController@products');
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
 Auth::routes();
@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::match(['get', 'post'], '/admin/dashboard', 'AdminController@dashboard');
+
     //Category Route
     Route::match(['get', 'post'], '/admin/add-category', 'CategoryController@addCategory');
     Route::match(['get', 'post'], '/admin/view-categories', 'CategoryController@viewCategories');

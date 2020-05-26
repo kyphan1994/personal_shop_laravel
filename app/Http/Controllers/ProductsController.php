@@ -45,7 +45,7 @@ class ProductsController extends Controller
                     }
                 }
                 $product->save();
-                return redirect('/admin/view_products')->with('flash_message_success', 'Product has been added successfully!');
+                return redirect('/admin/view-products')->with('flash_message_success', 'Product has been added successfully!');
 
             }
             $categories = Category::where(['parent_id'=>0])->get();
@@ -135,7 +135,10 @@ class ProductsController extends Controller
             $data = $request->all();
             Products::where('id', $data['id'])->update(['status'=>$data['status']]);
         }
+
+        public function products($id=null) {
+            $productDetails = Products::where('id', $id)->first();
+            // echo $productDetails;die;
+            return view('pershop.product_details')->with(compact('productDetails'));
+        }
     }
-
-
-//
