@@ -146,8 +146,6 @@ class ProductsController extends Controller
 
         public function addAttributes(Request $request, $id=null) {
             $productDetails = Products::with('attributes')->where(['id'=>$id])->first();
-            // dd($id);
-            // dd($productDetails);
             if($request->isMethod('post')) {    
                 $data = $request->all();
                 // echo "<pre>"; print_r($data); die;
@@ -181,5 +179,24 @@ class ProductsController extends Controller
         public function deleteAttributes($id=null) {
             ProductsAttributes::where(['id'=>$id])->delete();
             return redirect()->back()->with('flash_message_error', 'Product Attributes has been deleted!');
+        }
+
+        public function editAttributes(Request $request, $id=null) {
+            if ($request->isMethod('post')) {
+                $data = $request->all();
+                foreach ($data['attr'] as $key=>$attr) {
+                    ProductsAttributes::where(['id'=>$data['attr'][$key]])->update([
+                        'sku'=>$data['sku'][$key],
+                        'size'=>$data['size'][$key],
+                        'price'=>$data['price'][$key],
+                        'stock'=>$data['stock'][$key]
+                    ]);
+                }
+                return redirect()->back()->with('flash_message_success', 'Product Attributes Updated!');
+            }
+        }
+
+        public function addImages(Request $request, $id=null) {
+            return view('admin.products.add_images');
         }
     }

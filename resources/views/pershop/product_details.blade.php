@@ -61,15 +61,15 @@
                                         <div class="form-group size-st">
                                             <label class="size-label">Size</label>
                                             <select id="basic" class="selectpicker show-tick form-control">
-									<option value="0">Size</option>
-									<option value="0">S</option>
-									<option value="1">M</option>
-									<option value="1">L</option>
-									<option value="1">XL</option>
-									<option value="1">XXL</option>
-									<option value="1">3XL</option>
-									<option value="1">4XL</option>
-								</select>
+                                                <option value="0">Size</option>
+                                                <option value="0">S</option>
+                                                <option value="1">M</option>
+                                                <option value="1">L</option>
+                                                <option value="1">XL</option>
+                                                <option value="1">XXL</option>
+                                                <option value="1">3XL</option>
+                                                <option value="1">4XL</option>
+								            </select>
                                         </div>
                                     </li>
                                     <li>

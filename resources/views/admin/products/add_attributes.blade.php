@@ -100,10 +100,10 @@
                            <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                            <div class="table-responsive">
                               <table id="table_id" class="table table-bordered table-striped table-hover">
+                              <form enctype="multipart/form-data" action="{{url('/admin/edit-attributes/'.$productDetails->id)}}" method="POST"> {{csrf_field()}}
                                  <thead>
                                     <tr class="info">
                                        <th>Category ID</th>
-                                       <th>Product ID</th>
                                        <th>SKU</th>
                                        <th>Size</th>
                                        <th>Price</th>
@@ -112,20 +112,24 @@
                                     </tr>
                                  </thead>
                                  <tbody>
-                                    @foreach($productDetails['attributes'] -> $attribute)
+                                    @foreach($productDetails['attributes'] as $attribute)
                                     <tr>
+                                       <td style="display: none;"><input type="hidden" type="text" name="attr[]" value="{{$attribute->id}}">{{$attribute->id}}</td>
                                        <td>{{$attribute->id}}</td>
-                                       <td>{{$attribute->priduct_id}}</td>
-                                       <td>{{$attribute->SKU}}</td>
-                                       <td>{{$attribute->size}}</td>
-                                       <td>{{$attribute->price}}</td>
-                                       <td>{{$attribute->stock}}</td>
-                                       <td>
-                                          <a href="{{url('/admin/delete-attribute/'.$attribute->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                       <td><input type="text" name="sku[]" value="{{$attribute->sku}}" style="text-align: center;"></td>
+                                       <td><input type="text" name="size[]" value="{{$attribute->size}}" style="text-align: center;"></td>
+                                       <td><input type="text" name="price[]" value="{{$attribute->price}}" style="text-align: center;"></td>
+                                       <td><input type="text" name="stock[]" value="{{$attribute->stock}}" style="text-align: center;"></td>
+                                       <td class="center">
+                                          <div class="btn-group">
+                                             <input type="submit" value="update" class="btn btn-success" name="" style="height: 30px; padding-top= 4px;">
+                                             <a href="{{url('/admin/delete-attribute/'.$attribute->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                          </div>
                                        </td>
                                     </tr>
                                     @endforeach
                                  </tbody>
+                              </form>
                               </table>
                            </div>
                         </div>
