@@ -8,6 +8,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Products;
 use App\Category;
 use App\ProductsAttributes;
+use App\ProductsImages;
 
 // use Laravel\Ui\Presets\React;
 
@@ -196,7 +197,26 @@ class ProductsController extends Controller
             }
         }
 
-        public function addImages(Request $request, $id=null) {
-            return view('admin.products.add_images');
+        public function addImages(Request $request, $id=null) { 
+            $productDetails = Products::where(['id'=>$id])->first();
+            if ($request->isMethod('post')) {
+                $data = $request->all();
+                if ($request->hasFile('image')) {
+                    $files = $request->file('image');
+                    foreach($files as $file) {
+                        $image = new ProductsImages;
+                        $extension = $file->getClientOriginalExtension();
+                        $filename = rand(111, 9999).'.'.$extension;
+                        $image_path = 'uploads/products/'.$filename;
+                        Image::make($file)->save($image_path);
+                        $image->image = $filename;
+                        $image->product_id = $data['product_id'];
+                        $image->save();
+                    }
+                }
+                return redirect('/admin/add-image/'.$id)->with('flash_message_success', 'Image has been updated');
+            }
+            $productImages = ProductsImages::where(['product_id'=>$id])->get();
+            return view('admin.products.add_images')->with(compact('productDetails', 'productImages'));
         }
     }

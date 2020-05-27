@@ -92,9 +92,10 @@
                                           <div id="myElem" style="display:none;" class="alert alert-success">Status Enabled</div>
                                        </td>
                                        <td>
-                                          <a href="{{url('/admin/add-attributes/'.$product->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-list"></i></a>
-                                          <a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                          <a href="{{url('/admin/delete-product/'.$product->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                          <a href="{{url('/admin/add-images/'.$product->id)}}" class="btn btn-info btn-sm" title="AddImages"><i class="fa fa-image"></i></a>
+                                          <a href="{{url('/admin/add-attributes/'.$product->id)}}" class="btn btn-warning btn-sm" title="AddAttributes"><i class="fa fa-list"></i></a>
+                                          <a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-add btn-sm" title="EditProduct"><i class="fa fa-pencil"></i></a>
+                                          <a href="{{url('/admin/delete-product/'.$product->id)}}" class="btn btn-danger btn-sm" title="DelProduct"><i class="fa fa-trash-o"></i> </a>
                                        </td>
                                     </tr>
                                     @endforeach
