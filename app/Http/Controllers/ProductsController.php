@@ -140,9 +140,10 @@ class ProductsController extends Controller
         }
 
         public function products($id=null) {
-            $productDetails = Products::where('id', $id)->first();
+            $productDetails = Products::with('attributes')->where('id', $id)->first();
             // echo $productDetails;die;
-            return view('pershop.product_details')->with(compact('productDetails'));
+            $ProductsAltImages = ProductsImages::where('product_id', $id)->get();
+            return view('pershop.product_details')->with(compact('productDetails', 'ProductsAltImages'));
         }
 
         public function addAttributes(Request $request, $id=null) {
@@ -177,7 +178,7 @@ class ProductsController extends Controller
             return view('admin.products.add_attributes')->with(compact('productDetails'));
         }
 
-        public function deleteAttributes($id=null) {
+        public function deleteAttribute($id=null) {
             ProductsAttributes::where(['id'=>$id])->delete();
             return redirect()->back()->with('flash_message_error', 'Product Attributes has been deleted!');
         }
@@ -214,9 +215,21 @@ class ProductsController extends Controller
                         $image->save();
                     }
                 }
-                return redirect('/admin/add-image/'.$id)->with('flash_message_success', 'Image has been updated');
+                return redirect('/admin/add-images/'.$id)->with('flash_message_success', 'Image has been updated');
             }
             $productImages = ProductsImages::where(['product_id'=>$id])->get();
             return view('admin.products.add_images')->with(compact('productDetails', 'productImages'));
+        }
+
+        public function deleteAltImage($id=null) {
+            $productImage = ProductsImages::where(['id'=>$id])->first();
+
+            $image_path = 'uploads/products';
+            if (file_exists($image_path.$productImage->image)) {
+                unlink($image_path.$productImage->image);
+            }
+            ProductsImages::where(['id'=>$id])->delete();
+            Alert::success('Deleted', 'Success Message');
+            return redirect()->back();
         }
     }

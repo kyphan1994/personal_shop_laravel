@@ -110,17 +110,17 @@
                                     @foreach($productImages as $productImage)
                                     <tr>
                                         <td>{{$productImage->id}}</td>
-                                        <td>{{$productImage->$product_id}}</td>
+                                        <td>{{$productImage->product_id}}</td>
                                         <td>
                                             <img src="{{url('uploads/products/'.$productImage->image)}}" alt="" style="width: 80px;">
                                         </td>
                                         <td class="center">
-                                           <div class="btn-group">
-                                              <a href="{{url('/admin/edit-images/'.$productImage->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
-                                           </div>
+                                          <div class="btn-group">
+                                             <a href="{{url('/admin/delete-alt-image/'.$productImage->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+                                          </div>
                                         </td>
                                      </tr>
-
+                                     @endforeach
                                   </tbody>
                                </form>
                                </table>
