@@ -68,6 +68,7 @@
                                        <th>Image</th>
                                        <th>Price</th>
                                        <th>Status</th>
+                                       <th>Featured Products</th>
                                        <th>Action</th>
                                     </tr>
                                  </thead>
@@ -85,6 +86,12 @@
                                             @endif
                                         </td>
                                        <td>{{$product->price}}</td>
+                                       <td>
+                                          <input type="checkbox" class="ProductStatus btn btn-success" rel="{{$product->id}}"
+                                          data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger"
+                                          @if ($product['status']=="1") checked @endif>
+                                          <div id="myElem" style="display:none;" class="alert alert-success">Status Enabled</div>
+                                       </td>
                                        <td>
                                           <input type="checkbox" class="ProductStatus btn btn-success" rel="{{$product->id}}"
                                           data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger"

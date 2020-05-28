@@ -141,9 +141,9 @@ class ProductsController extends Controller
 
         public function products($id=null) {
             $productDetails = Products::with('attributes')->where('id', $id)->first();
-            // echo $productDetails;die;
             $ProductsAltImages = ProductsImages::where('product_id', $id)->get();
-            return view('pershop.product_details')->with(compact('productDetails', 'ProductsAltImages'));
+            $featuredProducts = Products::where(['featured_products'=>1])->get();
+            return view('pershop.product_details')->with(compact('productDetails', 'ProductsAltImages', 'featuredProducts'));
         }
 
         public function addAttributes(Request $request, $id=null) {
@@ -231,5 +231,10 @@ class ProductsController extends Controller
             ProductsImages::where(['id'=>$id])->delete();
             Alert::success('Deleted', 'Success Message');
             return redirect()->back();
+        }
+
+        public function updateFeatured(Request $request, $id=null) {
+            $data = $request->all();
+            Products::where('id', $data['id'])->update(['featured_products'=>$data['status']]);
         }
     }

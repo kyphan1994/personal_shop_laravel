@@ -130,6 +130,42 @@
                 }
             });
 
+            //Update Featured Products
+            $(".FeaturedStatus").change(function() {
+                var id =$(this).attr('rel');
+                if ($(this).prop("checked")==true) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'post',
+                        url: '/admin/update-featured-product-status',
+                        data: {status:'1', id:id},
+                        success:function(data) {
+                            $("#message_success").show();
+                            setTimeout(function() { $("#message_success").fadeOut('slow'); }, 500);
+                        }, error:function() {
+                            alert("Error");
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'post',
+                        url: '/admin/update-featured-product-status',
+                        data: {status:'0', id:id},
+                        success:function(resq) {
+                            $("#message_error").show();
+                            setTimeout(function() { $("#message_error").fadeOut('slow'); }, 500);
+                        }, error:function() {
+                            alert("Error");
+                        }
+                    });
+                }
+            });
+
             //Update Category Status
             $(".CategoryStatus").change(function() {
                 var id =$(this).attr('rel');
